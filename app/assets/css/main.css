@@ -1,0 +1,134 @@
+@import "tailwindcss";
+
+@theme {
+  --color-canvas: #000000;
+  --color-surface-soft: #0d0d0d;
+  --color-surface-card: #1a1a1a;
+  --color-surface-elevated: #262626;
+  --color-hairline: #3c3c3c;
+  --color-on-dark: #ffffff;
+  --color-body: #bbbbbb;
+  --color-body-strong: #e6e6e6;
+  --color-muted: #7e7e7e;
+  --color-m-blue-light: #0066b1;
+  --color-m-blue-dark: #1c69d4;
+  --color-m-red: #e22718;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    @apply bg-canvas text-on-dark antialiased;
+    font-family: var(--font-sans);
+  }
+
+  body {
+    @apply min-h-screen bg-canvas;
+  }
+}
+
+@layer components {
+  .m-stripe {
+    background: linear-gradient(
+      90deg,
+      var(--color-m-blue-light) 0%,
+      var(--color-m-blue-dark) 50%,
+      var(--color-m-red) 100%
+    );
+  }
+
+  .btn-primary {
+    @apply inline-flex h-12 items-center justify-center border border-on-dark px-8 text-sm font-bold uppercase tracking-[0.1em] text-on-dark transition-colors;
+  }
+
+  .btn-primary:hover {
+    @apply bg-on-dark text-canvas;
+  }
+
+  .btn-ghost {
+    @apply inline-flex h-10 items-center justify-center border border-hairline px-4 text-xs font-bold uppercase tracking-[0.1em] text-body transition-colors;
+  }
+
+  .btn-ghost:hover {
+    @apply border-on-dark text-on-dark;
+  }
+
+  .btn-danger {
+    @apply inline-flex h-12 items-center justify-center border border-m-red px-8 text-sm font-bold uppercase tracking-[0.1em] text-m-red transition-colors;
+  }
+
+  .btn-danger:hover {
+    @apply bg-m-red text-on-dark;
+  }
+
+  .btn-danger:disabled {
+    @apply cursor-not-allowed opacity-50;
+  }
+
+  .input-dark {
+    @apply h-12 w-full border border-hairline bg-surface-card px-4 text-base font-light text-on-dark outline-none transition-colors placeholder:text-muted;
+  }
+
+  .input-dark:focus {
+    @apply border-on-dark;
+  }
+
+  .card-surface {
+    @apply border border-hairline bg-surface-card p-6;
+  }
+
+  .label-uppercase {
+    @apply text-sm font-bold uppercase tracking-[0.1em] text-muted;
+  }
+
+  .icon-btn {
+    @apply inline-flex h-10 w-10 shrink-0 items-center justify-center border border-hairline bg-surface-card text-body transition-colors;
+  }
+
+  .icon-btn:hover {
+    @apply border-on-dark text-on-dark;
+  }
+
+  .icon-btn-danger:hover {
+    @apply border-m-red text-m-red;
+  }
+
+  .status-badge {
+    @apply text-[10px] font-bold uppercase tracking-[0.12em];
+  }
+
+  .status-badge--active {
+    @apply text-on-dark;
+  }
+
+  .status-badge--inactive {
+    @apply text-muted;
+  }
+
+  .scrollbar-theme {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-hairline) var(--color-surface-soft);
+  }
+
+  .scrollbar-theme::-webkit-scrollbar {
+    height: 6px;
+    width: 6px;
+  }
+
+  .scrollbar-theme::-webkit-scrollbar-track {
+    background: var(--color-surface-soft);
+  }
+
+  .scrollbar-theme::-webkit-scrollbar-thumb {
+    background: var(--color-hairline);
+    border: 1px solid var(--color-surface-soft);
+  }
+
+  .scrollbar-theme::-webkit-scrollbar-thumb:hover {
+    background: var(--color-muted);
+  }
+
+  .scrollbar-theme::-webkit-scrollbar-corner {
+    background: var(--color-canvas);
+  }
+}
