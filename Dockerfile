@@ -12,8 +12,12 @@ RUN yarn install --immutable
 
 COPY . .
 
-# URL pública da API (configure no Coolify como build argument)
+# ENV=prod + URL_PROD no Coolify (build args ou variáveis de ambiente do build)
+ARG ENV=prod
+ARG URL_PROD
 ARG NUXT_PUBLIC_API_BASE=http://localhost:4044
+ENV ENV=${ENV}
+ENV URL_PROD=${URL_PROD}
 ENV NUXT_PUBLIC_API_BASE=${NUXT_PUBLIC_API_BASE}
 
 RUN yarn build
